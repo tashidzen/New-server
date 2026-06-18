@@ -9,7 +9,7 @@ const server = http.createServer((request, response) => {
   if (url.searchParams.has("users")) {
     response.statusCode = 200;
     response.statusMessage = "OK";
-    response.setHeader = "Content-Type: application/json";
+    response.setHeader("Content-Type", "application/json");
     response.write(getUsers());
     response.end();
 
@@ -20,13 +20,13 @@ const server = http.createServer((request, response) => {
     if (name && name.trim() !== "") {
       response.statusCode= 200;
       response.statusMessage = "OK";
-      response.setHeader = "Content-Type: text/plain";
+      response.setHeader("Content-Type", "text/plain");
       response.write(`Hello, ${name}!`);
       response.end();
     } else {
       response.statusCode = 400;
       response.statusMessage = "Bad Request";
-      response.setHeader = "Content-Type: text/plain";
+      response.setHeader("Content-Type", "text/plain");
       response.write("Enter a name");
       response.end();
     }
@@ -34,7 +34,7 @@ const server = http.createServer((request, response) => {
   } else if (request.url === "/") {
     response.statusCode = 200;
     response.statusMessage = "OK";
-    response.setHeader = "Content-Type: text/plain";
+    response.setHeader("Content-Type", "text/plain");
     response.write("Hello, World!");
     response.end();
 
@@ -42,7 +42,7 @@ const server = http.createServer((request, response) => {
   } else {
     response.statusCode = 500;
     response.statusMessage = "Internal Server Error";
-    response.setHeader = "Content-Type: text/plain";
+    response.setHeader("Content-Type", "text/plain");
     response.write("");
     response.end();
   }
